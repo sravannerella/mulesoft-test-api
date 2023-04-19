@@ -5,3 +5,15 @@ protocols: [HTTP, HTTPS]
 baseUri: https://localhost:8080/api/{version}
 
 
+/health:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+            example: |
+              {
+                "status": "Running",
+                "timestamp": "2023-04-19T11:12:00.000Z"
+              }
