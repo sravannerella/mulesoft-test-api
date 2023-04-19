@@ -1,0 +1,29 @@
+name: Mulesoft CI
+
+on:
+    pull_request:
+        branches: [develop]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Source Code
+          uses: actions/checkout@v3
+
+        - name: Setup Java Environment
+          uses: actions/setup-java@v3
+          with:
+            distribution: "adopt"
+            java-version: "11"
+        
+        - name: Clean Mule Project
+          run: mvn clean
+        
+        - name: Run MUnit Test cases
+          run: mvn clean test
+        
+        - name: Package Mule Project
+          run: mvn clean package
+        
+        
